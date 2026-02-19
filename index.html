@@ -4,37 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SinghCraft | Ultra Pro</title>
+<title>SinghCraft</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-html{scroll-behavior:smooth;}
+html{
+scroll-behavior:smooth;
+}
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#020617;
 color:white;
+background:#1c1208;
 overflow-x:hidden;
 }
 
-/* ===== MOVING LIGHT BACKGROUND ===== */
+/* ===== BROWN MOVING BACKGROUND ===== */
 .bg{
 position:fixed;
 width:100%;
 height:100%;
 z-index:-1;
 background:
-radial-gradient(circle at 20% 30%,#2563eb33,transparent),
-radial-gradient(circle at 80% 70%,#7c3aed33,transparent);
-animation:bgmove 15s infinite alternate ease-in-out;
+radial-gradient(circle at 20% 30%,#8b5e3c55,transparent),
+radial-gradient(circle at 80% 70%,#5c3a21aa,transparent);
+animation:bgmove 18s infinite alternate ease-in-out;
 }
 
 @keyframes bgmove{
 from{transform:scale(1);}
-to{transform:scale(1.3);}
+to{transform:scale(1.25);}
 }
 
 /* ===== SCROLL BAR ===== */
@@ -43,7 +45,7 @@ position:fixed;
 top:0;
 left:0;
 height:4px;
-background:#60a5fa;
+background:#d4a373;
 width:0%;
 z-index:2000;
 }
@@ -55,8 +57,8 @@ width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 60px;
-background:rgba(15,23,42,.6);
-backdrop-filter:blur(15px);
+background:rgba(40,25,15,.6);
+backdrop-filter:blur(12px);
 z-index:1000;
 }
 
@@ -68,7 +70,7 @@ transition:.3s;
 }
 
 nav a.active{
-color:#60a5fa;
+color:#d4a373;
 }
 
 /* HERO */
@@ -79,23 +81,25 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+scroll-margin-top:100px;
 }
 
 .hero h1{
 font-size:70px;
-background:linear-gradient(90deg,#60a5fa,#a78bfa);
+background:linear-gradient(90deg,#d4a373,#fff);
 -webkit-background-clip:text;
 color:transparent;
 }
 
-/* SECTION */
+/* SECTIONS */
 section{
-padding:120px 60px;
+padding:140px 60px;
 text-align:center;
+scroll-margin-top:100px;
 }
 
 .title{
-font-size:42px;
+font-size:40px;
 margin-bottom:50px;
 }
 
@@ -104,16 +108,16 @@ margin-bottom:50px;
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:35px;
+gap:30px;
 }
 
 .card{
 background:rgba(255,255,255,.05);
-backdrop-filter:blur(15px);
+backdrop-filter:blur(10px);
 padding:35px;
 width:260px;
-border-radius:18px;
-transition:.5s;
+border-radius:16px;
+transition:.4s;
 opacity:0;
 transform:translateY(40px);
 }
@@ -124,8 +128,8 @@ transform:translateY(0);
 }
 
 .card:hover{
-transform:translateY(-15px);
-box-shadow:0 25px 60px rgba(0,0,0,.7);
+transform:translateY(-12px);
+box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
 /* CONTACT */
@@ -137,11 +141,20 @@ border:none;
 border-radius:8px;
 }
 
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#d4a373;
+color:black;
+cursor:pointer;
+}
+
 /* FOOTER */
 footer{
 padding:30px;
 text-align:center;
-opacity:.7;
+background:#120a05;
 }
 
 </style>
@@ -165,67 +178,71 @@ opacity:.7;
 
 <!-- HOME -->
 <div class="hero" id="home">
-<h1>Design The Future</h1>
-<p>Next Generation Digital Agency</p>
+<h1>Creative Digital Agency</h1>
+<p>Premium Websites • Branding • Marketing</p>
 </div>
 
 <!-- SERVICES -->
 <section id="services">
-<h2 class="title">Services</h2>
+<h2 class="title">Our Services</h2>
+
 <div class="grid">
 <div class="card">Website Development</div>
 <div class="card">UI / UX Design</div>
 <div class="card">Brand Identity</div>
 <div class="card">Digital Marketing</div>
 </div>
+
 </section>
 
 <!-- WORK -->
 <section id="work">
-<h2 class="title">Projects</h2>
+<h2 class="title">Our Work</h2>
+
 <div class="grid">
-<div class="card">Startup Website</div>
-<div class="card">Portfolio Design</div>
-<div class="card">E-commerce Platform</div>
+<div class="card">Business Website</div>
+<div class="card">Portfolio Website</div>
+<div class="card">E-commerce Store</div>
 </div>
+
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-<h2 class="title">Contact</h2>
-<input placeholder="Name"><br>
+<h2 class="title">Contact Us</h2>
+
+<input placeholder="Your Name"><br>
 <input placeholder="Email"><br>
 <textarea placeholder="Message"></textarea><br>
-<button>Send</button>
+<button>Send Message</button>
+
 </section>
 
 <footer>
-© 2026 SinghCraft — Ultra Professional Experience
+© 2026 SinghCraft — Premium Brown Edition
 </footer>
 
 <script>
 
-/* ===== SCROLL REVEAL ===== */
+/* SCROLL ANIMATION + NAV ACTIVE + PROGRESS */
 const cards=document.querySelectorAll('.card');
+const navLinks=document.querySelectorAll("nav a");
 
 window.addEventListener('scroll',()=>{
+
 cards.forEach(card=>{
-const pos=card.getBoundingClientRect().top;
-if(pos<window.innerHeight-100){
+if(card.getBoundingClientRect().top<window.innerHeight-100){
 card.classList.add('show');
 }
 });
 
-/* ===== PROGRESS BAR ===== */
+/* Progress Bar */
 let scrollTop=document.documentElement.scrollTop;
 let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
 
-/* ===== ACTIVE NAV ===== */
-const sections=document.querySelectorAll("section, .hero");
-const navLinks=document.querySelectorAll("nav a");
-
-sections.forEach(sec=>{
+/* Active Menu */
+document.querySelectorAll("section,.hero").forEach(sec=>{
 let top=window.scrollY;
 let offset=sec.offsetTop-150;
 let height=sec.offsetHeight;
