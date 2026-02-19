@@ -1,171 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SinghCraft</title>
 
+<link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<style>
-
-html{scroll-behavior:smooth;}
-
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-color:white;
-background:#1c1208;
-overflow-x:hidden;
-}
-
-/* BACKGROUND */
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
-background:
-radial-gradient(circle at 20% 30%,#8b5e3c55,transparent),
-radial-gradient(circle at 80% 70%,#5c3a21aa,transparent);
-animation:bgmove 18s infinite alternate ease-in-out;
-}
-
-@keyframes bgmove{
-from{transform:scale(1);}
-to{transform:scale(1.25);}
-}
-
-/* SCROLL BAR */
-.progress{
-position:fixed;
-top:0;
-left:0;
-height:4px;
-background:#d4a373;
-width:0%;
-z-index:2000;
-}
-
-/* NAVBAR */
-nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 25px;
-background:rgba(40,25,15,.7);
-backdrop-filter:blur(12px);
-z-index:1000;
-box-sizing:border-box;
-flex-wrap:wrap;
-}
-
-nav div{
-display:flex;
-flex-wrap:wrap;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin-left:15px;
-font-size:15px;
-transition:.3s;
-}
-
-nav a.active{
-color:#d4a373;
-}
-
-/* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-scroll-margin-top:100px;
-}
-
-.hero h1{
-font-size:65px;
-background:linear-gradient(90deg,#d4a373,#fff);
--webkit-background-clip:text;
-color:transparent;
-}
-
-/* SECTIONS */
-section{
-padding:140px 40px;
-text-align:center;
-scroll-margin-top:100px;
-}
-
-.title{
-font-size:38px;
-margin-bottom:50px;
-}
-
-/* CARDS */
-.grid{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
-}
-
-.card{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(10px);
-padding:30px;
-width:250px;
-border-radius:14px;
-transition:.4s;
-opacity:0;
-transform:translateY(40px);
-}
-
-.card.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,.6);
-}
-
-/* CONTACT */
-input,textarea{
-width:300px;
-padding:12px;
-margin:10px;
-border:none;
-border-radius:8px;
-}
-
-button{
-padding:12px 25px;
-border:none;
-border-radius:25px;
-background:#d4a373;
-color:black;
-cursor:pointer;
-}
-
-/* FOOTER */
-footer{
-padding:25px;
-text-align:center;
-background:#120a05;
-}
-
-</style>
 </head>
 
 <body>
@@ -176,22 +21,32 @@ background:#120a05;
 <!-- NAVBAR -->
 <nav>
 <h2>SinghCraft</h2>
+
 <div>
 <a href="#home">Home</a>
 <a href="#services">Services</a>
 <a href="#work">Work</a>
 <a href="#contact">Contact</a>
 </div>
+
 </nav>
 
-<!-- HOME -->
-<div class="hero" id="home">
+<!-- HERO -->
+<section class="hero" id="home">
+
+<img src="girl-left.jpg" class="girl left">
+<img src="girl-right.jpg" class="girl right">
+
+<div class="hero-text">
 <h1>Welcome</h1>
 <p>Premium Websites • Branding • Marketing</p>
 </div>
 
+</section>
+
 <!-- SERVICES -->
 <section id="services">
+
 <h2 class="title">Our Services</h2>
 
 <div class="grid">
@@ -205,6 +60,7 @@ background:#120a05;
 
 <!-- WORK -->
 <section id="work">
+
 <h2 class="title">Our Work</h2>
 
 <div class="grid">
@@ -217,11 +73,13 @@ background:#120a05;
 
 <!-- CONTACT -->
 <section id="contact">
+
 <h2 class="title">Contact Us</h2>
 
 <input placeholder="Your Name"><br>
 <input placeholder="Email"><br>
 <textarea placeholder="Message"></textarea><br>
+
 <button>Send Message</button>
 
 </section>
@@ -230,40 +88,7 @@ background:#120a05;
 © 2026 SinghCraft | Developed by Amarjeet Singh
 </footer>
 
-<script>
-
-const cards=document.querySelectorAll('.card');
-const navLinks=document.querySelectorAll("nav a");
-
-window.addEventListener('scroll',()=>{
-
-cards.forEach(card=>{
-if(card.getBoundingClientRect().top<window.innerHeight-100){
-card.classList.add('show');
-}
-});
-
-let scrollTop=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
-
-document.querySelectorAll("section,.hero").forEach(sec=>{
-let top=window.scrollY;
-let offset=sec.offsetTop-150;
-let height=sec.offsetHeight;
-let id=sec.getAttribute("id");
-
-if(top>=offset && top<offset+height){
-navLinks.forEach(link=>{
-link.classList.remove("active");
-document.querySelector("nav a[href*="+id+"]").classList.add("active");
-});
-}
-});
-
-});
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
