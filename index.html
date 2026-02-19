@@ -4,35 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SinghCraft | Creative Agency</title>
+<title>SinghCraft | Ultra Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* GLOBAL */
 html{scroll-behavior:smooth;}
 
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
+background:#020617;
 color:white;
-background:
-radial-gradient(circle at 20% 20%,#1e3a8a40,transparent),
-radial-gradient(circle at 80% 80%,#2563eb40,transparent),
-#020617;
 overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ===== MOVING LIGHT BACKGROUND ===== */
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+background:
+radial-gradient(circle at 20% 30%,#2563eb33,transparent),
+radial-gradient(circle at 80% 70%,#7c3aed33,transparent);
+animation:bgmove 15s infinite alternate ease-in-out;
+}
+
+@keyframes bgmove{
+from{transform:scale(1);}
+to{transform:scale(1.3);}
+}
+
+/* ===== SCROLL BAR ===== */
+.progress{
+position:fixed;
+top:0;
+left:0;
+height:4px;
+background:#60a5fa;
+width:0%;
+z-index:2000;
+}
+
+/* ===== NAVBAR ===== */
 nav{
 position:fixed;
 width:100%;
 display:flex;
 justify-content:space-between;
 padding:20px 60px;
-background:rgba(15,23,42,0.6);
-backdrop-filter:blur(12px);
+background:rgba(15,23,42,.6);
+backdrop-filter:blur(15px);
 z-index:1000;
 }
 
@@ -40,11 +64,10 @@ nav a{
 color:white;
 text-decoration:none;
 margin-left:25px;
-font-weight:500;
 transition:.3s;
 }
 
-nav a:hover{
+nav a.active{
 color:#60a5fa;
 }
 
@@ -65,36 +88,15 @@ background:linear-gradient(90deg,#60a5fa,#a78bfa);
 color:transparent;
 }
 
-.hero p{
-opacity:.8;
-font-size:20px;
-}
-
-.hero button{
-margin-top:25px;
-padding:14px 30px;
-border:none;
-border-radius:30px;
-background:linear-gradient(90deg,#2563eb,#7c3aed);
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:.4s;
-}
-
-.hero button:hover{
-transform:scale(1.05);
-}
-
 /* SECTION */
 section{
-padding:100px 60px;
+padding:120px 60px;
 text-align:center;
 }
 
-.section-title{
-font-size:40px;
-margin-bottom:40px;
+.title{
+font-size:42px;
+margin-bottom:50px;
 }
 
 /* CARDS */
@@ -102,40 +104,43 @@ margin-bottom:40px;
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:30px;
+gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(15px);
 padding:35px;
 width:260px;
-border-radius:16px;
-transition:.4s;
+border-radius:18px;
+transition:.5s;
+opacity:0;
+transform:translateY(40px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
 }
 
 .card:hover{
-transform:translateY(-12px);
-box-shadow:0 20px 40px rgba(0,0,0,.6);
+transform:translateY(-15px);
+box-shadow:0 25px 60px rgba(0,0,0,.7);
 }
 
 /* CONTACT */
-.contact{
-background:#020617;
-}
-
 input,textarea{
-width:300px;
+width:320px;
 padding:12px;
 margin:10px;
 border:none;
 border-radius:8px;
 }
 
+/* FOOTER */
 footer{
-text-align:center;
 padding:30px;
-background:#020617;
+text-align:center;
 opacity:.7;
 }
 
@@ -143,6 +148,9 @@ opacity:.7;
 </head>
 
 <body>
+
+<div class="bg"></div>
+<div class="progress" id="progress"></div>
 
 <!-- NAVBAR -->
 <nav>
@@ -155,79 +163,85 @@ opacity:.7;
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- HOME -->
 <div class="hero" id="home">
-<h1>Build Your Digital Future</h1>
-<p>Premium Websites • Branding • Growth Solutions</p>
-<button>Start Project</button>
+<h1>Design The Future</h1>
+<p>Next Generation Digital Agency</p>
 </div>
 
 <!-- SERVICES -->
 <section id="services">
-<h2 class="section-title">Our Services</h2>
-
+<h2 class="title">Services</h2>
 <div class="grid">
-<div class="card">
-<h3>Website Development</h3>
-<p>High performance modern websites.</p>
+<div class="card">Website Development</div>
+<div class="card">UI / UX Design</div>
+<div class="card">Brand Identity</div>
+<div class="card">Digital Marketing</div>
 </div>
-
-<div class="card">
-<h3>UI/UX Design</h3>
-<p>Beautiful and user focused interfaces.</p>
-</div>
-
-<div class="card">
-<h3>Digital Marketing</h3>
-<p>Grow brand visibility & reach.</p>
-</div>
-
-<div class="card">
-<h3>Brand Identity</h3>
-<p>Create powerful business identity.</p>
-</div>
-</div>
-
 </section>
 
 <!-- WORK -->
 <section id="work">
-<h2 class="section-title">Our Projects</h2>
-
+<h2 class="title">Projects</h2>
 <div class="grid">
-<div class="card">
-<h3>Business Website</h3>
-<p>Corporate modern design.</p>
+<div class="card">Startup Website</div>
+<div class="card">Portfolio Design</div>
+<div class="card">E-commerce Platform</div>
 </div>
-
-<div class="card">
-<h3>Portfolio Design</h3>
-<p>Personal brand websites.</p>
-</div>
-
-<div class="card">
-<h3>E-commerce Store</h3>
-<p>Online selling platforms.</p>
-</div>
-</div>
-
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
-<h2 class="section-title">Contact Us</h2>
-
-<input placeholder="Your Name"><br>
+<section id="contact">
+<h2 class="title">Contact</h2>
+<input placeholder="Name"><br>
 <input placeholder="Email"><br>
 <textarea placeholder="Message"></textarea><br>
-
-<button>Send Message</button>
-
+<button>Send</button>
 </section>
 
 <footer>
-© 2026 SinghCraft — Ultra Premium Experience
+© 2026 SinghCraft — Ultra Professional Experience
 </footer>
+
+<script>
+
+/* ===== SCROLL REVEAL ===== */
+const cards=document.querySelectorAll('.card');
+
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+const pos=card.getBoundingClientRect().top;
+if(pos<window.innerHeight-100){
+card.classList.add('show');
+}
+});
+
+/* ===== PROGRESS BAR ===== */
+let scrollTop=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
+
+/* ===== ACTIVE NAV ===== */
+const sections=document.querySelectorAll("section, .hero");
+const navLinks=document.querySelectorAll("nav a");
+
+sections.forEach(sec=>{
+let top=window.scrollY;
+let offset=sec.offsetTop-150;
+let height=sec.offsetHeight;
+let id=sec.getAttribute("id");
+
+if(top>=offset && top<offset+height){
+navLinks.forEach(link=>{
+link.classList.remove("active");
+document.querySelector("nav a[href*="+id+"]").classList.add("active");
+});
+}
+});
+
+});
+
+</script>
 
 </body>
 </html>
