@@ -4,34 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SinghCraft</title>
+<title>SinghCraft | Creative Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* GLOBAL */
+html{scroll-behavior:smooth;}
+
 body{
 margin:0;
-font-family:Arial;
-background:#0b1220;
+font-family:'Poppins',sans-serif;
 color:white;
+background:
+radial-gradient(circle at 20% 20%,#1e3a8a40,transparent),
+radial-gradient(circle at 80% 80%,#2563eb40,transparent),
+#020617;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
 nav{
+position:fixed;
+width:100%;
 display:flex;
 justify-content:space-between;
-padding:20px 50px;
-background:#111827;
+padding:20px 60px;
+background:rgba(15,23,42,0.6);
+backdrop-filter:blur(12px);
+z-index:1000;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:20px;
+margin-left:25px;
+font-weight:500;
+transition:.3s;
 }
 
-/* HERO SECTION */
+nav a:hover{
+color:#60a5fa;
+}
+
+/* HERO */
 .hero{
-height:90vh;
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -40,54 +59,84 @@ text-align:center;
 }
 
 .hero h1{
-font-size:60px;
-margin:0;
+font-size:70px;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero p{
+opacity:.8;
+font-size:20px;
 }
 
 .hero button{
-margin-top:20px;
-padding:12px 25px;
+margin-top:25px;
+padding:14px 30px;
 border:none;
-background:#4f9cff;
+border-radius:30px;
+background:linear-gradient(90deg,#2563eb,#7c3aed);
 color:white;
 font-size:18px;
-border-radius:8px;
 cursor:pointer;
+transition:.4s;
+}
+
+.hero button:hover{
+transform:scale(1.05);
 }
 
 /* SECTION */
 section{
-padding:80px;
+padding:100px 60px;
 text-align:center;
 }
 
-/* SERVICE CARDS */
-.services{
+.section-title{
+font-size:40px;
+margin-bottom:40px;
+}
+
+/* CARDS */
+.grid{
 display:flex;
 justify-content:center;
-gap:30px;
 flex-wrap:wrap;
-margin-top:40px;
+gap:30px;
 }
 
-.service-card{
-background:#111827;
-padding:30px;
-border-radius:12px;
-width:250px;
-transition:0.3s;
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:35px;
+width:260px;
+border-radius:16px;
+transition:.4s;
 }
 
-.service-card:hover{
-transform:translateY(-10px);
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
-/* FOOTER */
+/* CONTACT */
+.contact{
+background:#020617;
+}
+
+input,textarea{
+width:300px;
+padding:12px;
+margin:10px;
+border:none;
+border-radius:8px;
+}
+
 footer{
-background:#111827;
-padding:20px;
 text-align:center;
+padding:30px;
+background:#020617;
+opacity:.7;
 }
 
 </style>
@@ -99,72 +148,85 @@ text-align:center;
 <nav>
 <h2>SinghCraft 🚀</h2>
 <div>
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Contact</a>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
 </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-<h1>Creative Digital Agency</h1>
-<p>We build modern websites & brands</p>
-<button>Get Started</button>
+<div class="hero" id="home">
+<h1>Build Your Digital Future</h1>
+<p>Premium Websites • Branding • Growth Solutions</p>
+<button>Start Project</button>
 </div>
 
 <!-- SERVICES -->
-<section>
-<h2>Our Services</h2>
+<section id="services">
+<h2 class="section-title">Our Services</h2>
 
-<div class="services">
-
-<div class="service-card">
-<h3>🌐 Website Design</h3>
-<p>Modern and responsive websites.</p>
+<div class="grid">
+<div class="card">
+<h3>Website Development</h3>
+<p>High performance modern websites.</p>
 </div>
 
-<div class="service-card">
-<h3>🎨 Branding</h3>
-<p>Create strong brand identity.</p>
+<div class="card">
+<h3>UI/UX Design</h3>
+<p>Beautiful and user focused interfaces.</p>
 </div>
 
-<div class="service-card">
-<h3>📈 Marketing</h3>
-<p>Grow your business online.</p>
+<div class="card">
+<h3>Digital Marketing</h3>
+<p>Grow brand visibility & reach.</p>
 </div>
 
+<div class="card">
+<h3>Brand Identity</h3>
+<p>Create powerful business identity.</p>
+</div>
 </div>
 
 </section>
-  <!-- PORTFOLIO -->
-<section>
-<h2>Our Work</h2>
 
-<div class="services">
+<!-- WORK -->
+<section id="work">
+<h2 class="section-title">Our Projects</h2>
 
-<div class="service-card">
+<div class="grid">
+<div class="card">
 <h3>Business Website</h3>
-<p>Modern company website design.</p>
+<p>Corporate modern design.</p>
 </div>
 
-<div class="service-card">
-<h3>Portfolio Website</h3>
-<p>Personal branding website.</p>
+<div class="card">
+<h3>Portfolio Design</h3>
+<p>Personal brand websites.</p>
 </div>
 
-<div class="service-card">
+<div class="card">
 <h3>E-commerce Store</h3>
-<p>Online shopping platform.</p>
+<p>Online selling platforms.</p>
 </div>
-
 </div>
 
 </section>
 
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2 class="section-title">Contact Us</h2>
 
-<!-- FOOTER -->
+<input placeholder="Your Name"><br>
+<input placeholder="Email"><br>
+<textarea placeholder="Message"></textarea><br>
+
+<button>Send Message</button>
+
+</section>
+
 <footer>
-<p>© 2026 SinghCraft</p>
+© 2026 SinghCraft — Ultra Premium Experience
 </footer>
 
 </body>
