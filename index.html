@@ -64,11 +64,6 @@ box-sizing:border-box;
 flex-wrap:wrap;
 }
 
-nav div{
-display:flex;
-flex-wrap:wrap;
-}
-
 nav a{
 color:white;
 text-decoration:none;
@@ -77,9 +72,7 @@ font-size:15px;
 transition:.3s;
 }
 
-nav a.active{
-color:#d4a373;
-}
+nav a.active{color:#d4a373;}
 
 /* HERO */
 .hero{
@@ -89,7 +82,6 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-scroll-margin-top:100px;
 }
 
 .hero h1{
@@ -103,7 +95,6 @@ color:transparent;
 section{
 padding:140px 40px;
 text-align:center;
-scroll-margin-top:100px;
 }
 
 .title{
@@ -135,17 +126,8 @@ opacity:1;
 transform:translateY(0);
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,.6);
-}
-
-/* ===== GIRLS SECTION ===== */
-
-.girl-card{
-padding:0;
-overflow:hidden;
-}
+/* GIRLS */
+.girl-card{padding:0;overflow:hidden;}
 
 .girl-card img{
 width:100%;
@@ -155,9 +137,7 @@ border-radius:14px;
 transition:.6s;
 }
 
-.girl-card:hover img{
-transform:scale(1.1);
-}
+.girl-card:hover img{transform:scale(1.1);}
 
 /* CONTACT */
 input,textarea{
@@ -173,8 +153,22 @@ padding:12px 25px;
 border:none;
 border-radius:25px;
 background:#d4a373;
-color:black;
 cursor:pointer;
+}
+
+/* THANK YOU */
+#thankyou{
+opacity:0;
+transform:translateY(20px);
+transition:.6s;
+margin-top:20px;
+color:#d4a373;
+font-size:20px;
+}
+
+#thankyou.show{
+opacity:1;
+transform:translateY(0);
 }
 
 /* FOOTER */
@@ -192,7 +186,6 @@ background:#120a05;
 <div class="bg"></div>
 <div class="progress" id="progress"></div>
 
-<!-- NAVBAR -->
 <nav>
 <h2>SinghCraft</h2>
 <div>
@@ -204,67 +197,60 @@ background:#120a05;
 </div>
 </nav>
 
-<!-- HOME -->
 <div class="hero" id="home">
 <h1>Welcome</h1>
 <p>Premium Websites • Branding • Marketing</p>
 </div>
 
-<!-- SERVICES -->
 <section id="services">
 <h2 class="title">Our Services</h2>
-
 <div class="grid">
 <div class="card">Website Development</div>
 <div class="card">UI / UX Design</div>
 <div class="card">Brand Identity</div>
 <div class="card">Digital Marketing</div>
 </div>
-
 </section>
 
-<!-- WORK -->
 <section id="work">
 <h2 class="title">Our Work</h2>
-
 <div class="grid">
 <div class="card">Business Website</div>
 <div class="card">Portfolio Website</div>
 <div class="card">E-commerce Store</div>
 </div>
-
 </section>
 
-<!-- ✅ NEW TEAM / GIRLS SECTION -->
 <section id="team">
 <h2 class="title">Our Creative Team</h2>
-
 <div class="grid">
-
 <div class="card girl-card">
 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330">
 </div>
-
 <div class="card girl-card">
 <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
 </div>
-
 <div class="card girl-card">
 <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce">
 </div>
-
 </div>
-
 </section>
 
-<!-- CONTACT -->
+<!-- ✅ CONTACT WORKING FORM -->
 <section id="contact">
 <h2 class="title">Contact Us</h2>
 
-<input placeholder="Your Name"><br>
-<input placeholder="Email"><br>
-<textarea placeholder="Message"></textarea><br>
-<button>Send Message</button>
+<form name="contact" method="POST" data-netlify="true" id="contactForm">
+<input type="hidden" name="form-name" value="contact">
+
+<input type="text" name="name" placeholder="Your Name" required><br>
+<input type="email" name="email" placeholder="Email" required><br>
+<textarea name="message" placeholder="Message" required></textarea><br>
+
+<button type="submit">Send Message</button>
+</form>
+
+<div id="thankyou">✅ Thank You! Message Sent Successfully</div>
 
 </section>
 
@@ -275,35 +261,24 @@ background:#120a05;
 <script>
 
 const cards=document.querySelectorAll('.card');
-const navLinks=document.querySelectorAll("nav a");
 
 window.addEventListener('scroll',()=>{
-
 cards.forEach(card=>{
 if(card.getBoundingClientRect().top<window.innerHeight-100){
 card.classList.add('show');
 }
 });
-
-let scrollTop=document.documentElement.scrollTop;
-let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("progress").style.width=(scrollTop/height)*100+"%";
-
-document.querySelectorAll("section,.hero").forEach(sec=>{
-let top=window.scrollY;
-let offset=sec.offsetTop-150;
-let height=sec.offsetHeight;
-let id=sec.getAttribute("id");
-
-if(top>=offset && top<offset+height){
-navLinks.forEach(link=>{
-link.classList.remove("active");
-let active=document.querySelector("nav a[href*="+id+"]");
-if(active) active.classList.add("active");
-});
-}
 });
 
+/* THANK YOU ANIMATION */
+const form=document.getElementById("contactForm");
+const thankyou=document.getElementById("thankyou");
+
+form.addEventListener("submit",()=>{
+setTimeout(()=>{
+form.reset();
+thankyou.classList.add("show");
+},500);
 });
 
 </script>
