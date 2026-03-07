@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -20,16 +21,19 @@ background:#1c1208;
 overflow-x:hidden;
 }
 
-/* BACKGROUND */
+/* animated background */
+
 .bg{
 position:fixed;
 width:100%;
 height:100%;
 z-index:-1;
+
 background:
 radial-gradient(circle at 20% 30%,#8b5e3c55,transparent),
 radial-gradient(circle at 80% 70%,#5c3a21aa,transparent);
-animation:bgmove 18s infinite alternate ease-in-out;
+
+animation:bgmove 20s infinite alternate ease-in-out;
 }
 
 @keyframes bgmove{
@@ -37,46 +41,43 @@ from{transform:scale(1);}
 to{transform:scale(1.25);}
 }
 
-/* FLOATING CONTACT BUTTON */
-
-.contact-btn{
-position:fixed;
-bottom:25px;
-right:25px;
-background:#d4a373;
-color:black;
-padding:14px 20px;
-border-radius:30px;
-text-decoration:none;
-font-weight:500;
-box-shadow:0 10px 25px rgba(0,0,0,.5);
-z-index:2000;
-transition:.3s;
-}
-
-.contact-btn:hover{
-transform:scale(1.08);
-}
-
-/* NAVBAR */
+/* glass navbar */
 
 nav{
+
 position:fixed;
 top:0;
 width:100%;
+
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 25px;
-background:rgba(40,25,15,.7);
-backdrop-filter:blur(12px);
+
+padding:15px 40px;
+
+background:rgba(40,25,15,.45);
+backdrop-filter:blur(16px);
+
 z-index:1000;
+box-sizing:border-box;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+nav h2{
+margin:0;
+letter-spacing:1px;
+}
+
+nav div{
+display:flex;
+gap:22px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:15px;
 transition:.3s;
 }
 
@@ -84,25 +85,54 @@ nav a:hover{
 color:#d4a373;
 }
 
-/* HERO */
+/* hero */
 
 .hero{
+
 height:100vh;
+
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
+
+padding-top:80px;
+
 }
 
 .hero h1{
-font-size:65px;
+
+font-size:72px;
+
 background:linear-gradient(90deg,#d4a373,#fff);
 -webkit-background-clip:text;
 color:transparent;
+
+animation:fadeup 1.2s ease;
+
 }
 
-/* SECTIONS */
+.hero p{
+font-size:18px;
+opacity:.8;
+}
+
+@keyframes fadeup{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* sections */
 
 section{
 padding:140px 40px;
@@ -110,75 +140,86 @@ text-align:center;
 }
 
 .title{
-font-size:38px;
-margin-bottom:50px;
+font-size:40px;
+margin-bottom:60px;
 }
 
-/* CARDS */
+/* grid */
 
 .grid{
+
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:25px;
+gap:30px;
+
 }
 
+/* 3D cards */
+
 .card{
+
 background:rgba(255,255,255,.05);
+
+padding:35px;
+width:280px;
+
+border-radius:18px;
+
 backdrop-filter:blur(10px);
-padding:30px;
-width:300px;
-border-radius:14px;
-transition:.4s;
+
+transition:.45s;
+
 opacity:0;
-transform:translateY(40px);
+transform:translateY(50px) rotateX(10deg);
+
+box-shadow:0 15px 30px rgba(0,0,0,.4);
+
 }
 
 .card.show{
 opacity:1;
-transform:translateY(0);
+transform:translateY(0) rotateX(0);
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 40px rgba(0,0,0,.6);
+
+transform:rotateY(8deg) translateY(-12px) scale(1.03);
+
+box-shadow:0 25px 60px rgba(0,0,0,.7);
+
 }
 
-/* CONTACT FORM */
+/* contact */
 
 input,textarea{
+
 width:300px;
+
 padding:12px;
 margin:10px;
+
 border:none;
 border-radius:8px;
+
 }
 
 button{
+
 padding:12px 25px;
+
 border:none;
 border-radius:25px;
+
 background:#d4a373;
+
 cursor:pointer;
+
+font-weight:500;
+
 }
 
-/* THANK YOU */
-
-#thankyou{
-opacity:0;
-transform:translateY(20px);
-transition:.6s;
-margin-top:20px;
-color:#d4a373;
-font-size:20px;
-}
-
-#thankyou.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* FOOTER */
+/* footer */
 
 footer{
 padding:25px;
@@ -187,101 +228,130 @@ background:#120a05;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="bg"></div>
 
-<!-- FLOATING CONTACT BUTTON -->
-<a href="#contact" class="contact-btn">Contact</a>
+<!-- navbar -->
 
-<!-- NAVBAR -->
 <nav>
+
 <h2>SinghCraft</h2>
+
 <div>
+
 <a href="#home">Home</a>
 <a href="#services">Services</a>
 <a href="#work">Work</a>
 <a href="#team">Team</a>
 <a href="#contact">Contact</a>
+
 </div>
+
 </nav>
 
-<!-- HERO -->
+<!-- hero -->
+
 <div class="hero" id="home">
-<h1>Welcome</h1>
+
+<h1>SinghCraft</h1>
+
 <p>Premium Websites • Branding • Marketing</p>
+
 </div>
 
-<!-- SERVICES -->
+<!-- services -->
+
 <section id="services">
+
 <h2 class="title">Our Services</h2>
 
 <div class="grid">
+
 <div class="card">Website Development</div>
+
 <div class="card">UI / UX Design</div>
+
 <div class="card">Brand Identity</div>
+
 <div class="card">Digital Marketing</div>
+
 </div>
 
 </section>
 
-<!-- WORK -->
+<!-- work -->
+
 <section id="work">
 
 <h2 class="title">Our Work</h2>
 
 <div class="grid">
+
 <div class="card">Business Website</div>
+
 <div class="card">Portfolio Website</div>
+
 <div class="card">E-commerce Store</div>
+
 </div>
 
 </section>
 
-<!-- TEAM -->
+<!-- team -->
+
 <section id="team">
 
 <h2 class="title">Our Creative Team</h2>
 
 <div class="grid">
+
 <div class="card">
+
 Our professional team focuses on creating premium
 websites, branding strategies and modern digital
 solutions for businesses.
+
 </div>
+
 </div>
 
 </section>
 
-<!-- CONTACT -->
+<!-- contact -->
+
 <section id="contact">
 
 <h2 class="title">Contact Us</h2>
 
-<form name="contact" method="POST" data-netlify="true" id="contactForm">
-
-<input type="hidden" name="form-name" value="contact">
+<form action="https://formsubmit.co/amarjeetsingh.edu1@gmail.com" method="POST">
 
 <input type="text" name="name" placeholder="Your Name" required><br>
+
 <input type="email" name="email" placeholder="Email" required><br>
 
 <textarea name="message" placeholder="Message" required></textarea><br>
+
+<input type="hidden" name="_captcha" value="false">
 
 <button type="submit">Send Message</button>
 
 </form>
 
-<div id="thankyou">✅ Thank You! Message Sent Successfully</div>
-
 </section>
 
 <footer>
+
 © 2026 SinghCraft | Developed by Amarjeet Singh
+
 </footer>
 
 <script>
+
+/* scroll reveal */
 
 const cards=document.querySelectorAll('.card');
 
@@ -289,27 +359,13 @@ window.addEventListener('scroll',()=>{
 
 cards.forEach(card=>{
 
-if(card.getBoundingClientRect().top<window.innerHeight-100){
+if(card.getBoundingClientRect().top<window.innerHeight-120){
 
 card.classList.add('show');
 
 }
 
 });
-
-});
-
-const form=document.getElementById("contactForm");
-const thankyou=document.getElementById("thankyou");
-
-form.addEventListener("submit",()=>{
-
-setTimeout(()=>{
-
-form.reset();
-thankyou.classList.add("show");
-
-},500);
 
 });
 
