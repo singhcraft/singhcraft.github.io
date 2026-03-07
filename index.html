@@ -37,18 +37,29 @@ from{transform:scale(1);}
 to{transform:scale(1.25);}
 }
 
-/* SCROLL BAR */
-.progress{
+/* FLOATING CONTACT BUTTON */
+
+.contact-btn{
 position:fixed;
-top:0;
-left:0;
-height:4px;
+bottom:25px;
+right:25px;
 background:#d4a373;
-width:0%;
+color:black;
+padding:14px 20px;
+border-radius:30px;
+text-decoration:none;
+font-weight:500;
+box-shadow:0 10px 25px rgba(0,0,0,.5);
 z-index:2000;
+transition:.3s;
+}
+
+.contact-btn:hover{
+transform:scale(1.08);
 }
 
 /* NAVBAR */
+
 nav{
 position:fixed;
 top:0;
@@ -69,9 +80,12 @@ margin-left:15px;
 transition:.3s;
 }
 
-nav a.active{color:#d4a373;}
+nav a:hover{
+color:#d4a373;
+}
 
 /* HERO */
+
 .hero{
 height:100vh;
 display:flex;
@@ -89,6 +103,7 @@ color:transparent;
 }
 
 /* SECTIONS */
+
 section{
 padding:140px 40px;
 text-align:center;
@@ -100,6 +115,7 @@ margin-bottom:50px;
 }
 
 /* CARDS */
+
 .grid{
 display:flex;
 justify-content:center;
@@ -128,7 +144,8 @@ transform:translateY(-10px);
 box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
-/* CONTACT */
+/* CONTACT FORM */
+
 input,textarea{
 width:300px;
 padding:12px;
@@ -146,6 +163,7 @@ cursor:pointer;
 }
 
 /* THANK YOU */
+
 #thankyou{
 opacity:0;
 transform:translateY(20px);
@@ -161,6 +179,7 @@ transform:translateY(0);
 }
 
 /* FOOTER */
+
 footer{
 padding:25px;
 text-align:center;
@@ -173,7 +192,9 @@ background:#120a05;
 <body>
 
 <div class="bg"></div>
-<div class="progress" id="progress"></div>
+
+<!-- FLOATING CONTACT BUTTON -->
+<a href="#contact" class="contact-btn">Contact</a>
 
 <!-- NAVBAR -->
 <nav>
@@ -196,26 +217,32 @@ background:#120a05;
 <!-- SERVICES -->
 <section id="services">
 <h2 class="title">Our Services</h2>
+
 <div class="grid">
 <div class="card">Website Development</div>
 <div class="card">UI / UX Design</div>
 <div class="card">Brand Identity</div>
 <div class="card">Digital Marketing</div>
 </div>
+
 </section>
 
 <!-- WORK -->
 <section id="work">
+
 <h2 class="title">Our Work</h2>
+
 <div class="grid">
 <div class="card">Business Website</div>
 <div class="card">Portfolio Website</div>
 <div class="card">E-commerce Store</div>
 </div>
+
 </section>
 
-<!-- TEAM WITHOUT PHOTOS -->
+<!-- TEAM -->
 <section id="team">
+
 <h2 class="title">Our Creative Team</h2>
 
 <div class="grid">
@@ -230,16 +257,20 @@ solutions for businesses.
 
 <!-- CONTACT -->
 <section id="contact">
+
 <h2 class="title">Contact Us</h2>
 
 <form name="contact" method="POST" data-netlify="true" id="contactForm">
+
 <input type="hidden" name="form-name" value="contact">
 
 <input type="text" name="name" placeholder="Your Name" required><br>
 <input type="email" name="email" placeholder="Email" required><br>
+
 <textarea name="message" placeholder="Message" required></textarea><br>
 
 <button type="submit">Send Message</button>
+
 </form>
 
 <div id="thankyou">✅ Thank You! Message Sent Successfully</div>
@@ -255,22 +286,31 @@ solutions for businesses.
 const cards=document.querySelectorAll('.card');
 
 window.addEventListener('scroll',()=>{
+
 cards.forEach(card=>{
+
 if(card.getBoundingClientRect().top<window.innerHeight-100){
+
 card.classList.add('show');
+
 }
-});
+
 });
 
-/* THANK YOU */
+});
+
 const form=document.getElementById("contactForm");
 const thankyou=document.getElementById("thankyou");
 
 form.addEventListener("submit",()=>{
+
 setTimeout(()=>{
+
 form.reset();
 thankyou.classList.add("show");
+
 },500);
+
 });
 
 </script>
